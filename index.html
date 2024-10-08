@@ -18,6 +18,9 @@
     <script defer src="src/update.js"></script>
     <script defer src="src/data.js"></script>
 
+    <script defer src="src/bunny/bunnyData.js"></script>
+    <script defer src="src/bunny/lootbox.js"></script>
+
     <title>Bunny Game</title>
 </head>
 <body>
@@ -52,7 +55,14 @@
     </div>
 </div>
 <div class="layer" id="gameLayer">
-
+    <div class="flexBox row" style="margin-top: 0.5rem" id="navContainer">
+        <button class="tabButton" onclick="switchTab('home')" style="color: goldenrod; border-color: goldenrod">Your Bunnies</button>
+        <button class="tabButton" onclick="switchTab('battle')" style="color: darkred; border-color: darkred">The Battlefield</button>
+        <div class="layer" style="left: 90%; top: 1.5rem">
+            <img src="res/bunnies/KitKat-Large.png" alt="">
+        </div>
+    </div>
+    <hr style="border-color: #606060">
 </div>
 </body>
 </html>

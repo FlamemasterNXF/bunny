@@ -22,3 +22,12 @@
 .layer{
     position: absolute;
 }
+
+.tabButton{
+    width: 8rem;
+    height: 3rem;
+    background-color: black;
+    border: 2px solid;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}

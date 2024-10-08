@@ -1,7 +1,7 @@
 //Version Flags
 const VERSION = "0.0"
-const VERSION_NAME = "The Pringle Update"
-const VERSION_DATE = "October 4th, 2024"
+const VERSION_NAME = ""
+const VERSION_DATE = "October 8th, 2024"
 const IS_BETA = true
 const SAVE_PATH = () => IS_BETA ? "bunnyGamefnxfSaveBeta" : "bunnyGamefnxfSave"
 
@@ -9,6 +9,8 @@ const SAVE_PATH = () => IS_BETA ? "bunnyGamefnxfSaveBeta" : "bunnyGamefnxfSave"
 function getDefaultObject() {
     return {
         nav: {current:"home", last:"home"},
+
+        bunnyData: [],
 
         lastTick: 0,
         loadedVersion: VERSION,
