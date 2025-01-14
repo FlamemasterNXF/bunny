@@ -11,5 +11,7 @@ const uHTML = {
             DOM(`${TABS[i]}Page`).style.display = 'none'
         }
         switchTab(data.nav.current)
+
+        loadBunnyHTML()
     }
 }

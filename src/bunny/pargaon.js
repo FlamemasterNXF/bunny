@@ -1,0 +1,1 @@
+let getParagonNumber = (i) => `res/numbers/${i}.svg`

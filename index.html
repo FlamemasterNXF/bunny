@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/classes.css" />
     <link rel="stylesheet" type="text/css" href="styles/modal.css" />
     <link rel="stylesheet" type="text/css" href="styles/tooltip.css" />
-    <link rel="icon" href="res/bunnies/Basic-Bunny.png" type="image" sizes="32x32" />
+    <link rel="icon" href="res/bunnies/Basic-Bunny.svg" type="image/svg" sizes="64x64" />
 
     <script defer src="src/etc/formatting.js"></script>
     <script defer src="src/etc/helpers.js"></script>
@@ -20,6 +20,9 @@
 
     <script defer src="src/bunny/bunnyData.js"></script>
     <script defer src="src/bunny/lootbox.js"></script>
+    <script defer src="src/bunny/rarity.js"></script>
+    <script defer src="src/bunny/pargaon.js"></script>
+    <script defer src="src/bunny/display.js"></script>
 
     <title>Bunny Game</title>
 </head>
@@ -55,7 +58,7 @@
     </div>
 </div>
 <div class="layer" id="gameLayer">
-    <div class="flexBox row" style="margin-top: 0.5rem" id="navContainer">
+    <div class="row flexBox" style="margin-top: 0.5rem" id="navContainer">
         <button class="tabButton" onclick="switchTab('home')" style="color: goldenrod; border-color: goldenrod">Your Bunnies</button>
         <button class="tabButton" onclick="switchTab('battle')" style="color: darkred; border-color: darkred">The Battlefield</button>
         <div class="layer" style="left: 90%; top: 1.5rem">
@@ -63,6 +66,10 @@
         </div>
     </div>
     <hr style="border-color: #606060">
+    <div class="row flexBox" id="homePage">
+        <div class="row flexBox bunnyRow" id="bunnyContainer" style="width: 60%;"></div>
+        <button id="bunnyInfo" style="width: 40%; height: 90%; border: 2px solid gray; align-self: flex-start"></button>
+    </div>
 </div>
 </body>
 </html>

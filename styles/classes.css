@@ -31,3 +31,26 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
+
+
+.bunnyRow{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.bunnyWrapper{
+    position: sticky;
+}
+.bunny{
+    width: 80px;
+    height: 80px;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+.paragon{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 0;
+    right: 0;
+}
