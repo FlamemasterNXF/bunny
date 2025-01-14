@@ -6,11 +6,11 @@
 }
 .generalTexts{
     color: white;
-    font-family: DosisLight;
+    font-family: DosisLight, serif;
 }
 .centeredTexts{
     color: white;
-    font-family: DosisLight;
+    font-family: DosisLight, serif;
     text-align: center;
 }
 .column {
