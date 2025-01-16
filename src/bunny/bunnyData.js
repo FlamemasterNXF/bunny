@@ -120,11 +120,11 @@ let statsData = [
         color: "#4ebbbf",
     },
     {
-        name: "Shield Percent",
+        name: "Damage Shield",
         color: "#66bf4e",
     },
     {
-        name: "Luck Percent",
+        name: "Luck",
         color: "#bfac4e",
     },
 ]

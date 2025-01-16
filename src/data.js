@@ -32,10 +32,8 @@ function save(){
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(SAVE_PATH()))
     if (savedata !== undefined) fixSave(data, savedata)
-    let extra = fixOldSaves()
+    fixOldSaves()
     createAlert('Welcome Back!', `You're playing Bunny Game v${VERSION}: ${VERSION_NAME}\nEnjoy!`, 'Thanks!')
-
-    return extra
 }
 
 //fix saves

@@ -36,10 +36,11 @@ let loadBunnyHTML = () => data.bunnyData.forEach((_, i) => addBunnyHTML(i))
 function makeBunnyStatsHTML(bunnyData){
     return Object.keys(bunnyData.stats)
         .map((stat, index) => {
-            const color = getStatColor(index);
-            const name = getStatName(index);
-            const value = bunnyData.stats[stat];
-            return `<br><span style="color: ${color}">${value} ${name}</span>`;
+            const statColor = getStatColor(index)
+            const statName = getStatName(index)
+            const statValue = bunnyData.stats[stat]
+            const statDisplay = (index > 1) ? statValue * 100 + '%' : statValue
+            return `<br><span style="color: ${statColor}">${statDisplay} ${statName}</span>`
         })
         .join('');
 }

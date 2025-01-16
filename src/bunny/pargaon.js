@@ -6,6 +6,7 @@ function loadParagonHTML(){
     const paragonBoxes = Array.from({ length: 4 }, (_, i) => {
         const paragonBox = document.createElement('img')
         paragonBox.addEventListener('click', () => paragonBoxControl(i))
+        paragonBox.src = 'res/fallback.png'
         paragonBox.className = 'paragonBox'
         paragonBox.id = `paragonBox${i}`
         return paragonBox
@@ -18,8 +19,8 @@ function resetTempSelectedBunnyData() {
 }
 
 function resetTempParagonData(index, skipRecreate = false) {
-    DOM(`paragonBox${index}`).src = '' // TODO: Make fallback image
-    DOM(`paragonBox${index}`).style.borderColor = '#595959'
+    DOM(`paragonBox${index}`).src = 'res/fallback.png'
+    DOM(`paragonBox${index}`).style.borderColor = 'gray'
     if(!skipRecreate) DOM(`bunnyWrapper${tempParagonData[index].index}`).style.display = 'block'
     tempParagonData[index] = null
 }
@@ -28,8 +29,10 @@ function canFuse() {
     const firstParagon = tempParagonData[0]
     if (firstParagon === null) return false
 
-    return tempParagonData.every(paragon =>
-        paragon !== null && paragon.data.rarity === firstParagon.data.rarity && paragon.data.id === firstParagon.data.id
+    return tempParagonData.every(paragon => paragon !== null
+        && paragon.data.rarity === firstParagon.data.rarity
+        && paragon.data.id === firstParagon.data.id
+        && paragon.data.paragonLevel === firstParagon.data.paragonLevel
     )
 }
 
@@ -73,25 +76,21 @@ function paragonPrep(index){
 function paragonFuse(){
     if(!canFuse()) return
 
-    let stats = {
-        damage: -1,
-        health: -1,
-        shield: -1,
-        luck: -1,
-    }
+    const firstParagonData = tempParagonData[0].data
+    let stats = { damage: -1, health: -1, shield: -1, luck: -1 }
 
     let bunny = {
-        rarity: tempParagonData[0].data.rarity,
-        id: tempParagonData[0].data.id,
-        paragonLevel: tempParagonData[0].data.paragonLevel+1,
+        rarity: firstParagonData.rarity,
+        id: firstParagonData.id,
+        paragonLevel: firstParagonData.paragonLevel+1,
         stats: stats
     }
 
     for (let i = 0; i < tempParagonData.length; i++) {
         for (const stat in tempParagonData[i].data.stats) {
-            if(tempParagonData[i].data.stats[stat] > stats[stat]) stats[stat] = tempParagonData[i].data.stats[stat]
+            const statsObject = tempParagonData[i].data.stats
+            if(statsObject[stat] > stats[stat]) stats[stat] = statsObject[stat]
         }
-        console.log(tempParagonData[i].index)
         data.bunnyData[tempParagonData[i].index] = null
         resetTempParagonData(i, true)
     }
