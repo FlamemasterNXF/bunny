@@ -7,17 +7,17 @@ let rarityData = [
     {
         name: 'Uncommon',
         probability: 0.18,
-        border: '#6e8a3f',
+        border: '#7c9e42',
     },
     {
         name: 'Rare',
         probability: 0.12,
-        border: '#00ab4a',
+        border: '#309367',
     },
     {
         name: 'Ultra-Rare',
         probability: 0.06,
-        border: '#3554d7',
+        border: '#0e7bb6',
     },
     {
         name: 'Legendary',

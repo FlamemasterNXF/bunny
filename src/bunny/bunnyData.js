@@ -1,7 +1,7 @@
 let bunnyData = [
     [
         {
-            name: "Basic Bunny",
+            name: "Bunny",
             desc: "A simple fluffy little friend.",
             img: "res/bunnies/Basic-Bunny.svg"
         }
@@ -109,3 +109,32 @@ let getBunny = (i, j) => bunnyData[i][j]
 let getBunnyName = (i, j) => bunnyData[i][j].name
 let getBunnyDesc = (i, j) => bunnyData[i][j].desc
 let getBunnyImg = (i, j) => bunnyData[i][j].img
+
+let statsData = [
+    {
+        name: "Attack Damage",
+        color: "#bf4e4e",
+    },
+    {
+        name: "Health Points",
+        color: "#4ebbbf",
+    },
+    {
+        name: "Shield Percent",
+        color: "#66bf4e",
+    },
+    {
+        name: "Luck Percent",
+        color: "#bfac4e",
+    },
+]
+let getStatName = (i) => statsData[i].name
+let getStatColor = (i) => statsData[i].color
+
+function countBunniesOfRarity(rarity){
+    let count = 0
+    for (let i = 0; i < data.bunnyData.length; i++) {
+        if(data.bunnyData[i].rarity === rarity) ++count
+    }
+    return count
+}

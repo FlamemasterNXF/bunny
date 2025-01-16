@@ -66,9 +66,12 @@
         </div>
     </div>
     <hr style="border-color: #606060">
-    <div class="row flexBox" id="homePage">
+    <div class="row" id="homePage">
         <div class="row flexBox bunnyRow" id="bunnyContainer" style="width: 60%;"></div>
-        <button id="bunnyInfo" style="width: 40%; height: 90%; border: 2px solid gray; align-self: flex-start"></button>
+        <div class="column flexBox" id="bunnyInfo" style="width: 40%; height: 50vh; border: 2px solid gray; background: black; align-self: flex-start; justify-content: flex-start;">
+            <img id="bunnyInfoImg" src="res/bunnies/Basic-Bunny.svg" style="width: 6rem; height: 6rem; border: 1px solid darkgray; margin-top: 2rem" alt="An image of the selected bunny">
+            <span class="centeredTexts" id="bunnyInfoText" style="margin-top: 2rem;">Hover over a bunny to see more information about it!</span>
+        </div>
     </div>
 </div>
 </body>
