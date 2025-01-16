@@ -13,5 +13,6 @@ const uHTML = {
         switchTab(data.nav.current)
 
         loadBunnyHTML()
+        loadParagonHTML()
     }
 }

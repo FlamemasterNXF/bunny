@@ -52,14 +52,11 @@ function fixSave(main=getDefaultObject(), data) {
     }
     else return getDefaultObject()
 }
+
 function fixOldSaves(){
-    let extra = false
-
-    return extra
+    data.bunnyData = data.bunnyData.filter(bunny => bunny !== null)
 }
-function fixOldSavesP2(){
 
-}
 function exportSave(){
     try {
         save()

@@ -5,7 +5,7 @@ function makeBunnyWrapperHTML(index) {
 
     const bunnyWrapper = Object.assign(document.createElement("div"), {
         className: "bunnyWrapper",
-        id: `bunnyWrapper${index}`
+        id: `bunnyWrapper${index}`,
     })
 
     const bunny = Object.assign(document.createElement('img'), {
@@ -22,6 +22,7 @@ function makeBunnyWrapperHTML(index) {
     })
 
     bunnyWrapper.addEventListener("mouseover", () => updateBunnyDisplayHTML(index))
+    bunnyWrapper.addEventListener("click", () => paragonPrep(index))
     bunnyWrapper.appendChild(bunny)
     bunnyWrapper.appendChild(paragon)
 

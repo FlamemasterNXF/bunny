@@ -26,6 +26,12 @@ function getLootboxRarity(luck = 0) {
     return -1
 }
 
+function addBunny(bunny){
+    console.log(bunny) // TODO: REMOVE DEBUG
+    data.bunnyData.push(bunny)
+    addBunnyHTML(data.bunnyData.length-1)
+}
+
 function openLootbox(luck = 0){
     let rarity = getLootboxRarity()
     if(rarity === -1) console.error(`SERIOUS ERROR in openLootbox(): luck:${luck}`)
@@ -44,9 +50,7 @@ function openLootbox(luck = 0){
         stats: stats
     }
 
-    console.log(bunny) // TODO: REMOVE DEBUG
-    data.bunnyData.push(bunny)
-    addBunnyHTML(data.bunnyData.length-1)
+    addBunny(bunny)
 }
 
 let getSavedBunny = (i) => bunnyData[i]

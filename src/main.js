@@ -14,12 +14,8 @@ function mainLoop() {
 
 
 window.onload = function () {
-    let extra = false
-    try { extra = load() } catch(e){ console.log('New Save!\nIf you\'re seeing this, welcome :)') }
-    console.log(extra)
+    try { load() } catch(e){ console.log('New Save!\nIf you\'re seeing this, welcome :)') }
     uHTML.load()
-
-    if(extra) fixOldSavesP2()
 
     window.setInterval(function () {
         mainLoop()

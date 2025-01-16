@@ -67,10 +67,17 @@
     </div>
     <hr style="border-color: #606060">
     <div class="row" id="homePage">
-        <div class="row flexBox bunnyRow" id="bunnyContainer" style="width: 60%;"></div>
-        <div class="column flexBox" id="bunnyInfo" style="width: 40%; height: 50vh; border: 2px solid gray; background: black; align-self: flex-start; justify-content: flex-start;">
-            <img id="bunnyInfoImg" src="res/bunnies/Basic-Bunny.svg" style="width: 6rem; height: 6rem; border: 1px solid darkgray; margin-top: 2rem" alt="An image of the selected bunny">
-            <span class="centeredTexts" id="bunnyInfoText" style="margin-top: 2rem;">Hover over a bunny to see more information about it!</span>
+        <div class="row flexBox bunnyRow" id="bunnyContainer" style="width: 60%; align-self: flex-start; justify-content: flex-start"></div>
+        <div class="column">
+            <div class="column flexBox" id="bunnyInfo" style="width: 40vw; height: 40vh; border: 2px solid gray; border-bottom: 0; background: black; align-self: flex-start;">
+                <img id="bunnyInfoImg" src="res/bunnies/Basic-Bunny.svg" style="width: 6rem; height: 6rem; border: 1px solid darkgray; margin-top: 1vh" alt="An image of the selected bunny">
+                <span class="centeredTexts" id="bunnyInfoText" style="margin-top: 1vh;">Hover over a bunny to see more information about it!</span>
+            </div>
+            <div class="column flexBox" id="paragonInfo" style="width: 40vw; height: 40vh; border: 2px solid gray; background: black; align-self: flex-start;">
+                <b class="centeredTexts" style="color: #a74ebf">Paragon Fusion</b>
+                <div class="row flexBox" id="paragonRow"></div>
+                <button id="paragonFuse" style="width: 21rem; height: 3rem; border: 2px solid #52255e; border-radius: 10px; color: #a74ebf; background: black; margin-top: 1rem;" onclick="paragonFuse()">Fuse!</button>
+            </div>
         </div>
     </div>
 </div>
