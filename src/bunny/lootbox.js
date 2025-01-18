@@ -47,6 +47,7 @@ function openLootbox(luck = 0){
         rarity: rarity,
         id: bunnyID,
         paragonLevel: 0,
+        currentHP: 0,
         stats: stats
     }
 

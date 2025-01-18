@@ -47,3 +47,9 @@ function allEqual(arr, i){
 let logn = (num, logBase) => num === 0 ? 0 : Math.log10(num) / Math.log10(logBase);
 
 let splitAt = (index, str) => [str.slice(0, index), str.slice(index)]
+
+function showHideElement(name){
+    DOM(name).classList.toggle('showItem');
+}
+
+

@@ -1,20 +1,15 @@
-function switchTab(tab){
-    data.nav.last = data.nav.current
-    data.nav.current = tab
-    DOM(`${data.nav.last}Page`).style.display = 'none'
-    DOM(`${tab}Page`).style.display = 'flex'
-}
-
-
-//let classTab = ""
-
-function switchSubtab(t, mode){
-    if(!isTabUnlocked(t)) return
-
-}
-
-function isTabUnlocked(t){
-    switch (t) {
-        default: return true
+function switchSubtab(tab){
+    if(tab === 'paragon'){
+        DOM(`subTabFlavour`).style.color = '#a74ebf'
+        DOM(`subTabFlavour`).innerText = 'Paragon Fusion'
     }
+    if(tab === 'combat'){
+        DOM(`subTabFlavour`).style.color = '#bf4e4e'
+        DOM(`subTabFlavour`).innerText = `Combat: Stage ${0}`
+    }
+
+    DOM(`${data.nav}SubTab`).style.display = 'none'
+
+    data.nav = tab
+    DOM(`${data.nav}SubTab`).style.display = 'flex'
 }
