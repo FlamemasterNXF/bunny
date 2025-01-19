@@ -13,17 +13,17 @@ function getBunnyTeamImg(index){
 }
 
 function loadCombatBunnyHTML(){
-    const bunny = data.combat.currentBunny.data
+    const bunny = data.combat.currentBunny
     const wrapper = DOM(`combatWrapper`)
 
     const combatBox = Object.assign(document.createElement('img'), {
-        src: bunny !== null ? getBunnyImg(bunny.rarity, bunny.id) : 'res/fallback.png',
+        src: bunny !== null ? getBunnyImg(bunny.data.rarity, bunny.data.id) : 'res/fallback.png',
         className: 'combatBoxes',
         id: `combatBox`,
     })
 
     const paragon = Object.assign(document.createElement('img'), {
-        src: bunny !== null ? getParagonNumber(bunny.paragonLevel) : 'res/fallback.png',
+        src: bunny !== null ? getParagonNumber(bunny.data.paragonLevel) : 'res/fallback.png',
         className: 'paragon',
         id: `combatParagon`,
         style: `margin-top: -0.1rem; margin-right: -0.3rem`
@@ -52,12 +52,13 @@ function loadCombatBunnyHTML(){
 }
 
 function changeBunnyTeamBorder(index, initElement = null){
-    if(data.teamData[index] === null || data.combat.currentBunny === null) return
+    if(data.teamData[index] === null || data.combat.currentBunny === null)
+        return initElement === null ? DOM(`teamBox${index}`).style.borderColor = '#153000' : null
     const teamIndex = data.teamData[index].index
     const combatIndex = data.combat.currentBunny.index
 
-    if(initElement !== null) initElement.style.borderColor = teamIndex === combatIndex ? '#a18a00' : 'darkgreen'
-    else DOM(`teamBox${index}`).style.borderColor = teamIndex === combatIndex ? '#a18a00' : 'darkgreen'
+    if(initElement !== null) initElement.style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
+    else DOM(`teamBox${index}`).style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
 }
 
 function loadBunnyTeamHTML(){
@@ -105,6 +106,11 @@ function loadBunnyTeamHTML(){
 
         teamColumn.appendChild(teamWrapper)
     }
+}
+
+function updateCombatBunnyHTML(bunny){
+    if(bunny === null && data.teamData.some(team => team !== null)) controlCombatBunny(data.teamData.find(team => team !== null))
+    if(data.teamData.every(team => team === null)) controlCombatBunny(bunny)
 }
 
 function loadEnemyHTML(){

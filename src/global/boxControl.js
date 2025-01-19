@@ -29,12 +29,13 @@ function resetBoxData(index, name, skipRecreate = false) {
     DOM(`${name}Box${index}`).src = 'res/fallback.png'
     DOM(`${name}Paragon${index}`).src = 'res/fallback.png'
     if(name === 'paragon') DOM(`${name}Box${index}`).style.borderColor = 'gray'
-    if(name === 'team') changeBunnyTeamBorder(index)
     if(!skipRecreate){
         let bunnyID = data[`${name}Data`][index].index
         DOM(`bunnyWrapper${bunnyID}`).style.display = 'block'
     }
     data[`${name}Data`][index] = null
+    if(name === 'team') updateCombatBunnyHTML(null)
+    if(name === 'team') changeBunnyTeamBorder(index)
 }
 
 function boxControl(index, name) {
@@ -42,7 +43,7 @@ function boxControl(index, name) {
         if(tempSelectedBunnyData.data === null) return
         DOM(`${name}Box${index}`).src = getBunnyImg(tempSelectedBunnyData.data.rarity, tempSelectedBunnyData.data.id)
         if(name === 'paragon') DOM(`${name}Box${index}`).style.borderColor = '#52255e'
-
+        if(name === 'team') updateCombatBunnyHTML(tempSelectedBunnyData)
         data[`${name}Data`][index] = structuredClone(tempSelectedBunnyData)
 
         DOM(`${name}Paragon${index}`).src = getParagonNumber(data[`${name}Data`][index].data.paragonLevel)

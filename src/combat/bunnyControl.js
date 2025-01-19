@@ -22,3 +22,10 @@ function bunnyRecover(index){
     if(data.bunnyData[index].currentHP > maxHealth) data.bunnyData[index].currentHP = maxHealth
     if(data.bunnyData[index].currentHP === maxHealth) wakeBunny(index)
 }
+
+function controlCombatBunny(bunny){
+    const isUnassign = bunny === null
+    data.combat.currentBunny = isUnassign ? null : structuredClone(bunny)
+    DOM(`combatBox`).src = isUnassign ? 'res/fallback.png' : getBunnyImg(bunny.data.rarity, bunny.data.id)
+    DOM(`combatParagon`).src = isUnassign ? 'res/fallback.png' : getParagonNumber(bunny.data.paragonLevel)
+}
