@@ -47,13 +47,13 @@ function openLootbox(luck = 0){
         rarity: rarity,
         id: bunnyID,
         paragonLevel: 0,
-        currentHP: 0,
+        currentHP: stats.health,
         stats: stats
     }
 
     addBunny(bunny)
 }
 
-let getSavedBunny = (i) => bunnyData[i]
-let getSavedBunnyRarity = (i) => bunnyData[i].rarity
-let getSavedBunnyID = (i) => bunnyData[i].id
+let getSavedBunny = (i) => data.bunnyData[i]
+let getSavedBunnyRarity = (i) => data.bunnyData[i].rarity
+let getSavedBunnyID = (i) => data.bunnyData[i].id

@@ -14,7 +14,8 @@ function mainLoop() {
 
 
 window.onload = function () {
-    try { load() } catch(e){ console.log('New Save!\nIf you\'re seeing this, welcome :)') }
+    //try { load() } catch(e){ console.log('New Save!\nIf you\'re seeing this, welcome :)') }
+    load()
     uHTML.load()
 
     window.setInterval(function () {

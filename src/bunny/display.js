@@ -21,11 +21,12 @@ function makeBunnyWrapperHTML(index) {
         id: `paragon${index}`
     })
 
-    bunnyWrapper.addEventListener("mouseover", () => updateBunnyDisplayHTML(index))
-    bunnyWrapper.addEventListener("click", () => paragonPrep(index))
+    bunnyWrapper.onmouseover = () => updateBunnyDisplayHTML(index)
+    bunnyWrapper.onclick = () => moveBunnyPrep(index)
     bunnyWrapper.appendChild(bunny)
     bunnyWrapper.appendChild(paragon)
 
+    bunnyWrapper.style.display = isBunnyInBox(index, 'paragon') || isBunnyInBox(index, 'team') ? "none" : "block"
     return bunnyWrapper
 }
 

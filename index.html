@@ -19,11 +19,18 @@
     <script defer src="src/update.js"></script>
     <script defer src="src/data.js"></script>
 
+    <script defer src="src/global/boxControl.js"></script>
+
     <script defer src="src/bunny/bunnyData.js"></script>
     <script defer src="src/bunny/lootbox.js"></script>
     <script defer src="src/bunny/rarity.js"></script>
     <script defer src="src/bunny/pargaon.js"></script>
     <script defer src="src/bunny/display.js"></script>
+
+    <script defer src="src/combat/enemyData.js"></script>
+    <script defer src="src/combat/enemy.js"></script>
+    <script defer src="src/combat/bunnyControl.js"></script>
+    <script defer src="src/combat/display.js"></script>
 
     <title>Bunny Game</title>
 </head>
@@ -78,8 +85,8 @@
                     <div class="dropdown" style="position: absolute; right: 1vw; top: 50%; transform: translateY(-50%);">
                         <button class="dropButton" id="navDropdownButton" onclick="showHideElement('navDropdown')">Select a page</button>
                         <div class="dropdownContent" id="navDropdown">
-                            <a onclick="switchSubtab('paragon')">Paragon Fusion</a>
                             <a onclick="switchSubtab('combat')">Bunny Combat</a>
+                            <a onclick="switchSubtab('paragon')">Paragon Fusion</a>
                         </div>
                     </div>
                 </div>
@@ -87,8 +94,15 @@
                     <div class="row flexBox" id="paragonRow"></div>
                     <button id="paragonFuse" style="width: 21rem; height: 3rem; border: 2px solid #52255e; border-radius: 10px; color: #a74ebf; background: black; margin-top: 1rem;" onclick="paragonFuse()">Fuse!</button>
                 </div>
-                <div class="subTab" id="combatSubTab">
-                    <div class="centeredTexts">yay</div>
+                <div class="row subTab" id="combatSubTab">
+                    <div class="column flexBox" id="combatColumn" style="margin-right: 5rem"></div>
+                    <div class="row flexBox" style="margin-top: 3vh;">
+                        <div class="row">
+                            <img id="bunnyCombatImg" src="res/fallback.png" style="width: 5rem; height: 5rem; border: 1px solid darkgreen; margin-top: 1vh" alt="An image of the fighting bunny">
+                            <img id="enemyImg" src="res/fallback.png" style="width: 5rem; height: 5rem; border: 1px solid darkred; margin-left: 3rem" alt="An image of the enemy">
+                        </div>
+                        <button id="enemyStats" style="color: white; border: 2px solid #230000; margin-left: 2rem; width: 10rem; height: 8rem; background: black; font-family: DosisLight, serif"></button>
+                    </div>
                 </div>
             </div>
         </div>

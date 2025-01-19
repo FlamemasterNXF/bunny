@@ -7,9 +7,13 @@ const SAVE_PATH = () => IS_BETA ? "bunnyGamefnxfSaveBeta" : "bunnyGamefnxfSave"
 //create all the variables in a data object for saving
 function getDefaultObject() {
     return {
-        nav: "paragon",
+        nav: "combat",
 
         bunnyData: [],
+        paragonData: Array(4).fill(null),
+        teamData: Array(3).fill(null),
+        combat: {completedStages: 0, currentStage: 1, currentBunny: null},
+        enemyData: 0, // 0 is a placeholder for null here
 
         lastTick: 0,
         loadedVersion: VERSION,
@@ -37,9 +41,10 @@ function load() {
 
 //fix saves
 function fixSave(main=getDefaultObject(), data) {
-    if (typeof data === "object") {
+    if(data === null) return getDefaultObject()
+    else if (typeof data === "object") {
         Object.keys(data).forEach(i => {
-            if (typeof main[i]  == "object") {
+            if (typeof main[i]  == "object" && main[i] !== null) {
                 fixSave(main[i], data[i])
             } else {
                 main[i] = data[i]
@@ -51,7 +56,7 @@ function fixSave(main=getDefaultObject(), data) {
 }
 
 function fixOldSaves(){
-    data.bunnyData = data.bunnyData.filter(bunny => bunny !== null)
+    if(data.bunnyData.length > 0) data.bunnyData = data.bunnyData.filter(bunny => bunny !== null)
 }
 
 function exportSave(){

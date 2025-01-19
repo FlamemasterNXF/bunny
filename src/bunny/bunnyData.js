@@ -138,3 +138,21 @@ function countBunniesOfRarity(rarity){
     }
     return count
 }
+
+function makeFirstBunny(){
+    let stats = {
+        damage: 1,
+        health: 1,
+        shield: 0,
+        luck: 0,
+    }
+    let bunny = {
+        rarity: 0,
+        id: 0,
+        paragonLevel: 0,
+        currentHP: stats.health,
+        stats: stats
+    }
+
+    addBunny(bunny)
+}
