@@ -1,15 +1,37 @@
 function loadParagonHTML(){
     const paragonRow = DOM('paragonRow')
-    const paragonBoxes = Array.from({ length: 4 }, (_, i) => {
-        const paragonBox = document.createElement('img')
+
+    // TODO: possibly standardize this type of "wrapper creation" stuff...? it may be too unique to standardize.
+    for (let i = 0; i < 4; i++) {
+        const paragonWrapper = Object.assign(document.createElement("div"), {
+            className: "bunnyWrapper",
+            id: `paragonWrapper${i}`,
+        })
+
+        const paragonBox = Object.assign(document.createElement('img'), {
+            src: data.paragonData[i] !== null ? getBunnyImg(data.paragonData[i].data.rarity, data.paragonData[i].data.id) : 'res/fallback.png',
+            className: 'paragonBox',
+            id: `paragonBox${i}`,
+            style: `border-color: ${data.paragonData[i] !== null ? '#52255e' : 'gray'}`
+        })
+
+        const paragon = Object.assign(document.createElement('img'), {
+            src: data.paragonData[i] !== null ? getParagonNumber(data.paragonData[i].data.paragonLevel) : 'res/fallback.png',
+            className: 'paragon',
+            id: `paragonParagon${i}`,
+            style: `margin-top: 1.9rem; margin-right: 0.8rem`
+        })
+
+        paragonWrapper.addEventListener('mouseover', () => {
+            if(data.paragonData[i] !== null) updateBunnyDisplayHTML(data.paragonData[i].index)
+        })
         paragonBox.addEventListener('click', () => boxControl(i, 'paragon'))
-        paragonBox.src = data.paragonData[i] !== null ? getBunnyImg(data.paragonData[i].data.rarity, data.paragonData[i].data.id) : 'res/fallback.png'
-        paragonBox.className = 'paragonBox'
-        paragonBox.id = `paragonBox${i}`
-        paragonBox.style.borderColor = data.paragonData[i] !== null ? '#52255e' : 'gray'
-        return paragonBox
-    })
-    paragonRow.append(...paragonBoxes)
+
+        paragonWrapper.appendChild(paragonBox)
+        paragonWrapper.appendChild(paragon)
+
+        paragonRow.appendChild(paragonWrapper)
+    }
     updateFuseButtonHTML()
 }
 

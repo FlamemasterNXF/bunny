@@ -18,7 +18,8 @@ function makeBunnyWrapperHTML(index) {
     const paragon = Object.assign(document.createElement('img'), {
         src: getParagonNumber(bunnyData.paragonLevel),
         className: 'paragon',
-        id: `paragon${index}`
+        id: `paragon${index}`,
+        style: `margin-top: -0.1rem;`
     })
 
     bunnyWrapper.onmouseover = () => updateBunnyDisplayHTML(index)

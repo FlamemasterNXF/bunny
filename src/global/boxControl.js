@@ -27,11 +27,9 @@ function isBunnyInBox(index, name){
 
 function resetBoxData(index, name, skipRecreate = false) {
     DOM(`${name}Box${index}`).src = 'res/fallback.png'
+    DOM(`${name}Paragon${index}`).src = 'res/fallback.png'
     if(name === 'paragon') DOM(`${name}Box${index}`).style.borderColor = 'gray'
-    if(name === 'team'){
-        DOM(`teamParagon${index}`).src = 'res/fallback.png'
-        changeBunnyTeamBorder(index)
-    }
+    if(name === 'team') changeBunnyTeamBorder(index)
     if(!skipRecreate){
         let bunnyID = data[`${name}Data`][index].index
         DOM(`bunnyWrapper${bunnyID}`).style.display = 'block'
@@ -47,10 +45,8 @@ function boxControl(index, name) {
 
         data[`${name}Data`][index] = structuredClone(tempSelectedBunnyData)
 
-        if(name === 'team'){
-            DOM(`teamParagon${index}`).src = getParagonNumber(data.teamData[index].data.paragonLevel)
-            changeBunnyTeamBorder(index)
-        }
+        DOM(`${name}Paragon${index}`).src = getParagonNumber(data[`${name}Data`][index].data.paragonLevel)
+        if(name === 'team') changeBunnyTeamBorder(index)
 
         resetTempSelectedBunnyData()
     }

@@ -25,7 +25,8 @@ function loadCombatBunnyHTML(){
     const paragon = Object.assign(document.createElement('img'), {
         src: bunny !== null ? getParagonNumber(bunny.paragonLevel) : 'res/fallback.png',
         className: 'paragon',
-        id: `combatParagon`
+        id: `combatParagon`,
+        style: `margin-top: -0.1rem; margin-right: -0.3rem`
     })
 
     const barOuter = Object.assign(document.createElement('div'), {
@@ -61,18 +62,6 @@ function changeBunnyTeamBorder(index, initElement = null){
 
 function loadBunnyTeamHTML(){
     const teamColumn = DOM('combatColumn')
-    /*const teamBoxes = Array.from({ length: 3 }, (_, i) => {
-        const teamBox = document.createElement('img')
-        teamBox.addEventListener('click', () => boxControl(i, 'team'))
-        teamBox.src = getBunnyTeamImg(i)
-        teamBox.className = 'teamBox'
-        teamBox.id = `teamBox${i}`
-        changeBunnyTeamBorder(i, teamBox)
-        return teamBox
-    })
-    teamColumn.append(...teamBoxes)
-     */
-
     for (let i = 0; i < 3; i++) {
         const teamWrapper = Object.assign(document.createElement("div"), {
             className: "bunnyWrapper",
@@ -89,7 +78,8 @@ function loadBunnyTeamHTML(){
         const paragon = Object.assign(document.createElement('img'), {
             src: data.teamData[i] !== null ? getParagonNumber(data.teamData[i].data.paragonLevel) : 'res/fallback.png',
             className: 'paragon',
-            id: `teamParagon${i}`
+            id: `teamParagon${i}`,
+            style: `margin-top: 0.2rem; margin-right: -0.3rem`
         })
 
         const barOuter = Object.assign(document.createElement('div'), {
