@@ -1,5 +1,7 @@
 const uHTML = {
-    update() { },
+    update() {
+        if(data.nav === 'combat') updateAllHealthBarHTML()
+    },
     load(){
         loadBunnyHTML()
         loadParagonHTML()

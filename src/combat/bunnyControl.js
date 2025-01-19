@@ -1,13 +1,13 @@
 let isBunnyKnocked = (i) => bunnyData[i].currentHP === 0
 
 function damageBunny(index, damage){
-    bunnyData[index].currentHP -= damage
-    if(bunnyData[index].currentHP < 0) bunnyData[index].currentHP = 0
-    if(bunnyData[index].currentHP === 0) knockBunny(index)
+    data.bunnyData[index].currentHP -= damage
+    if(data.bunnyData[index].currentHP < 0) data.bunnyData[index].currentHP = 0
+    if(data.bunnyData[index].currentHP === 0) knockBunny(index)
 }
 
 function getRecoveringBunny(){
-    for (let i = 0; i < bunnyData.length; i++) {
+    for (let i = 0; i < data.bunnyData.length; i++) {
         if(isBunnyKnocked(i)) return i
     }
 }

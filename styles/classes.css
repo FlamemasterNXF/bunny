@@ -64,6 +64,12 @@
     border: 2px solid #153000;
     width: 5rem;
     height: 5rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.combatBoxes{
+    border: 2px solid #a18a00;
+    width: 5rem;
+    height: 5rem;
 }

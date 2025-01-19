@@ -12,7 +12,7 @@ function getDefaultObject() {
         bunnyData: [],
         paragonData: Array(4).fill(null),
         teamData: Array(3).fill(null),
-        combat: {completedStages: 0, currentStage: 1, currentBunny: null},
+        combat: {completedStages: 0, currentStage: 1, enemiesDefeatedInStage: 0, currentBunny: null},
         enemyData: 0, // 0 is a placeholder for null here
 
         lastTick: 0,
@@ -44,7 +44,7 @@ function fixSave(main=getDefaultObject(), data) {
     if(data === null) return getDefaultObject()
     else if (typeof data === "object") {
         Object.keys(data).forEach(i => {
-            if (typeof main[i]  == "object" && main[i] !== null) {
+            if (typeof main[i] == "object" && main[i] !== null) {
                 fixSave(main[i], data[i])
             } else {
                 main[i] = data[i]

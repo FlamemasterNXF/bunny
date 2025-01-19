@@ -6,3 +6,12 @@ function makeFirstTimeEnemy(){
         id: 4,
     }
 }
+
+function damageEnemy(damage){
+    data.enemyData.currentHP -= damage
+    if(data.enemyData.currentHP < 0) defeatEnemy()
+}
+
+function defeatEnemy(){
+
+}
