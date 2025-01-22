@@ -1,7 +1,7 @@
 //Version Flags
-const VERSION = "0.0"
-const VERSION_DATE = "October 8th, 2024"
-const IS_BETA = true
+const VERSION = "0.1"
+const VERSION_DATE = "January 22nd, 2024"
+const IS_BETA = false
 const SAVE_PATH = () => IS_BETA ? "bunnyGamefnxfSaveBeta" : "bunnyGamefnxfSave"
 
 //create all the variables in a data object for saving
@@ -36,7 +36,7 @@ function load() {
     let savedata = JSON.parse(window.localStorage.getItem(SAVE_PATH()))
     if (savedata !== undefined) fixSave(data, savedata)
     fixOldSaves()
-    createAlert('Welcome Back!', `You're playing Bunny Game v${VERSION}\nEnjoy!`, 'Thanks!')
+    createAlert('Welcome Back!', `You're playing Bunny Game v${VERSION}<br>Enjoy!`, 'Thanks!')
 }
 
 //fix saves

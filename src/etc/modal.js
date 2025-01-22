@@ -1,9 +1,10 @@
-function createAlert(name,desc,close) {
+function createAlert(name,desc,close, length = 15) {
     DOM('alertTitle').innerHTML = name
     DOM('alertContent').innerHTML = desc
     DOM('closeAlert').innerHTML = close
     DOM('alert').style.display = 'block'
     DOM('alertContainer').style.display = 'block'
+    DOM('alertContainer').style.width = `${length}vw`
 }
 
 function createPrompt(name,func,useInput,desc='') {

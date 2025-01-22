@@ -6,10 +6,10 @@
     transform: translate(-50%, -50%);
     padding: 1rem;
     border-radius: 15px;
-    border: 4px solid #5d5d5d;
+    border: 4px solid #333333;
     text-align: center;
-    background-color: #838383;
+    background-color: #686868;
     font-family: DosisLight, serif;
-    width: 13rem;
+    width: 15vw;
     pointer-events: all;
 }
