@@ -38,10 +38,10 @@ function openLootbox(luck = 0){
     let bunnyID = getRandom(0, getBunniesByRarity(rarity).length)
 
     let stats = {
-        damage: 1,
-        health: 1,
-        shield: 0,
-        luck: 0,
+        damage: newStats.bunny.damage(),
+        health: newStats.bunny.hp(),
+        shield: newStats.bunny.shield(),
+        luck: newStats.bunny.luck(),
     }
     let bunny = {
         rarity: rarity,

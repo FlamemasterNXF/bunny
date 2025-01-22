@@ -17,16 +17,6 @@ function moveBunnyPrep(index){
     }
 }
 
-/*
-function isBunnyInBox(index, name){
-    for (let i = 0; i < data.paragonData.length; i++) {
-        if(data[`${name}Data`][i] === null) continue
-        if(data[`${name}Data`][i]?.index === index) return true
-    }
-    return false
-}
- */
-
 function resetBoxData(index, name, skipRecreate = false) {
     DOM(`${name}Box${index}`).src = 'res/fallback.png'
     DOM(`${name}Paragon${index}`).src = 'res/fallback.png'

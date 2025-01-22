@@ -141,8 +141,8 @@ function countBunniesOfRarity(rarity){
 
 function makeFirstBunny(){
     let stats = {
-        damage: 1,
-        health: 1,
+        damage: 15,
+        health: 200,
         shield: 0,
         luck: 0,
     }

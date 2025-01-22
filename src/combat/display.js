@@ -13,7 +13,7 @@ function getBunnyTeamImg(index){
 }
 
 function loadCombatBunnyHTML(){
-    const bunny = data.combat.currentBunny
+    const bunny = data.combat.currentBunny !== null ? data.combat.currentBunny.data : null
     const wrapper = DOM(`combatWrapper`)
 
     const combatBox = Object.assign(document.createElement('img'), {
@@ -42,7 +42,7 @@ function loadCombatBunnyHTML(){
 
     //teamWrapper.addEventListener('click', () => boxControl(i, 'team'))
     wrapper.addEventListener('mouseover', () => {
-        if(data.combat.currentBunny !== null) updateBunnyDisplayHTML(data.combat.currentBunny)
+        if(data.combat.currentBunny !== null) updateBunnyDisplayHTML(data.combat.currentBunny.data)
     })
 
     barOuter.appendChild(barInner)
@@ -109,8 +109,15 @@ function loadBunnyTeamHTML(){
 }
 
 function updateCombatBunnyHTML(bunny){
-    if(bunny === null && data.teamData.some(team => team !== null)) controlCombatBunny(data.teamData.find(team => team !== null))
-    if(data.teamData.every(team => team === null)) controlCombatBunny(bunny)
+    if(bunny === null && data.teamData.some(team => team !== null)){
+        //controlCombatBunny(data.teamData.find(team => team !== null)) <-- Sad, had to abandon for indexing
+        for (let i = 0; i < data.teamData.length; i++) {
+            if(data.teamData[i] !== null){
+                controlCombatBunny(data.teamData[i], i)
+            }
+        }
+    }
+    if(data.teamData.every(team => team === null)) controlCombatBunny(bunny, 0)
 }
 
 function loadEnemyHTML(){
@@ -146,7 +153,7 @@ let currentEnemyMaxHP = () => data.enemyData.maxHP
 let currentEnemyDamage = () => data.enemyData.damage
 
 function updateEnemyStatsHTML(){
-    DOM(`enemyStats`).innerHTML = `This is a <span style="color: #a80000">${getEnemyName(currentEnemy())}</span><br><span style="color: #a18a00">${currentEnemyMaxHP()} Health Points</span><br><span style="color: #a56c00">${currentEnemyDamage()} Damage</span>`
+    DOM(`enemyStats`).innerHTML = `This is a <span style="color: #a80000">${getEnemyName(currentEnemy())}</span><br><span style="color: #a18a00">${formatNumber(currentEnemyMaxHP())} Health Points</span><br><span style="color: #a56c00">${formatNumber(currentEnemyDamage())} Damage</span>`
 }
 
 function updateEnemyHTML(){
@@ -155,7 +162,7 @@ function updateEnemyHTML(){
 }
 
 function updateCombatHeaderHTML(){
-    DOM(`subTabFlavour`).innerText = `Combat: Stage ${data.combat.currentStage} (${data.combat.enemiesDefeatedInStage}/10)`
+    DOM(`subTabFlavour`).innerText = `Combat: Stage ${data.combat.currentStage} (${data.combat.enemiesDefeatedInStage}/${getStageRequirement()})`
 }
 
 function updateCombatHealthBarHTML(isEnemy){
@@ -165,7 +172,7 @@ function updateCombatHealthBarHTML(isEnemy){
         DOM(`healthBarEnemy`).style.width = `${progress}%`
     }
     else{
-        let progress = (data.combat.currentBunny.currentHP / data.combat.currentBunny.stats.health) * 100
+        let progress = (data.combat.currentBunny.data.currentHP / data.combat.currentBunny.data.stats.health) * 100
         DOM(`healthBarCombat`).style.width = `${progress}%`
     }
 }

@@ -27,7 +27,6 @@ function makeBunnyWrapperHTML(index) {
     bunnyWrapper.appendChild(bunny)
     bunnyWrapper.appendChild(paragon)
 
-    //bunnyWrapper.style.display = isBunnyInBox(index, 'paragon') || isBunnyInBox(index, 'team') ? "none" : "block"
     return bunnyWrapper
 }
 
@@ -41,7 +40,7 @@ function makeBunnyStatsHTML(bunnyData){
             const statColor = getStatColor(index)
             const statName = getStatName(index)
             const statValue = bunnyData.stats[stat]
-            const statDisplay = (index > 1) ? statValue * 100 + '%' : statValue
+            const statDisplay = (index > 1) ? formatNumber(statValue) + '%' : formatNumber(statValue)
             return `<br><span style="color: ${statColor}">${statDisplay} ${statName}</span>`
         })
         .join('');

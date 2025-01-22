@@ -8,6 +8,15 @@ function mainLoop() {
     // Update lastTick
     data.lastTick = Date.now()
 
+    if(data.combat.currentBunny !== null){
+        damageEnemy(data.combat.currentBunny.data.stats.damage*uDiff)
+        damageBunny(data.enemyData.damage*uDiff)
+    }
+    if(data.teamData.some(bunny => bunny !== null)){
+        bunnyRecover(getRecoveringBunny())
+        if(data.combat.currentBunny === null) sendHealthyBunny()
+    }
+
     // Update HTML
     uHTML.update()
 }

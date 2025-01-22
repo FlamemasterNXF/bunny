@@ -8,8 +8,13 @@ const DOM = (id) => {
     return el
 }
 
+// Max is exclusive
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min
+}
+
+function getRandomDecimal(min, max){
+    return Math.random() * (max - min) + min
 }
 
 function formatBool (bool, mode='OF'){
@@ -44,12 +49,25 @@ function allEqual(arr, i){
     return arr.every( v => v === i )
 }
 
-let logn = (num, logBase) => num === 0 ? 0 : Math.log10(num) / Math.log10(logBase);
+let logn = (num, logBase) => num === 0 ? 0 : Math.log10(num) / Math.log10(logBase)
+
+let nroot = (num, root) => num ** (1/root)
 
 let splitAt = (index, str) => [str.slice(0, index), str.slice(index)]
 
 function showHideElement(name){
     DOM(name).classList.toggle('showItem');
+}
+
+function formatNumber(num) {
+    if (num > 999999) {
+        return num.toExponential(2).replace('+', '')
+    } else {
+        return num.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
 }
 
 
