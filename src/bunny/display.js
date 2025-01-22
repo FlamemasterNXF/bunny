@@ -22,12 +22,12 @@ function makeBunnyWrapperHTML(index) {
         style: `margin-top: -0.1rem;`
     })
 
-    bunnyWrapper.onmouseover = () => updateBunnyDisplayHTML(index)
+    bunnyWrapper.onmouseover = () => updateBunnyDisplayHTML(bunnyData)
     bunnyWrapper.onclick = () => moveBunnyPrep(index)
     bunnyWrapper.appendChild(bunny)
     bunnyWrapper.appendChild(paragon)
 
-    bunnyWrapper.style.display = isBunnyInBox(index, 'paragon') || isBunnyInBox(index, 'team') ? "none" : "block"
+    //bunnyWrapper.style.display = isBunnyInBox(index, 'paragon') || isBunnyInBox(index, 'team') ? "none" : "block"
     return bunnyWrapper
 }
 
@@ -47,8 +47,7 @@ function makeBunnyStatsHTML(bunnyData){
         .join('');
 }
 
-function updateBunnyDisplayHTML(index){
-    const bunnyData = data.bunnyData[index]
+function updateBunnyDisplayHTML(bunnyData){
     DOM(`bunnyInfoImg`).src = getBunnyImg(bunnyData.rarity, bunnyData.id)
     DOM(`bunnyInfoText`).innerHTML = `This is a <span style="color: ${getRarityColor(bunnyData.rarity)}">${getRarityName(bunnyData.rarity)} ${getBunnyName(bunnyData.rarity, bunnyData.id)}!</span><br><i>${getBunnyDesc(bunnyData.rarity, bunnyData.id)}</i><br><br><span style="color: #a74ebf"><b>Paragon Tier: ${bunnyData.paragonLevel}</b></span>${makeBunnyStatsHTML(bunnyData)}`
 }

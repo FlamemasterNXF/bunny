@@ -8,7 +8,7 @@ function loadCombatHTML(){
 
 function getBunnyTeamImg(index){
     if(data.teamData[index] === null) return 'res/fallback.png'
-    const bunny = data.teamData[index].data
+    const bunny = data.teamData[index]
     return getBunnyImg(bunny.rarity, bunny.id)
 }
 
@@ -17,13 +17,13 @@ function loadCombatBunnyHTML(){
     const wrapper = DOM(`combatWrapper`)
 
     const combatBox = Object.assign(document.createElement('img'), {
-        src: bunny !== null ? getBunnyImg(bunny.data.rarity, bunny.data.id) : 'res/fallback.png',
+        src: bunny !== null ? getBunnyImg(bunny.rarity, bunny.id) : 'res/fallback.png',
         className: 'combatBoxes',
         id: `combatBox`,
     })
 
     const paragon = Object.assign(document.createElement('img'), {
-        src: bunny !== null ? getParagonNumber(bunny.data.paragonLevel) : 'res/fallback.png',
+        src: bunny !== null ? getParagonNumber(bunny.paragonLevel) : 'res/fallback.png',
         className: 'paragon',
         id: `combatParagon`,
         style: `margin-top: -0.1rem; margin-right: -0.3rem`
@@ -42,7 +42,7 @@ function loadCombatBunnyHTML(){
 
     //teamWrapper.addEventListener('click', () => boxControl(i, 'team'))
     wrapper.addEventListener('mouseover', () => {
-        if(data.combat.currentBunny !== null) updateBunnyDisplayHTML(data.combat.currentBunny.index)
+        if(data.combat.currentBunny !== null) updateBunnyDisplayHTML(data.combat.currentBunny)
     })
 
     barOuter.appendChild(barInner)
@@ -54,11 +54,11 @@ function loadCombatBunnyHTML(){
 function changeBunnyTeamBorder(index, initElement = null){
     if(data.teamData[index] === null || data.combat.currentBunny === null)
         return initElement === null ? DOM(`teamBox${index}`).style.borderColor = '#153000' : null
-    const teamIndex = data.teamData[index].index
-    const combatIndex = data.combat.currentBunny.index
+    //const teamIndex = data.teamData[index].index
+    //const combatIndex = data.combat.currentBunny.index
 
-    if(initElement !== null) initElement.style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
-    else DOM(`teamBox${index}`).style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
+    //if(initElement !== null) initElement.style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
+    //else DOM(`teamBox${index}`).style.borderColor = teamIndex === combatIndex ? '#a18a00' : '#153000'
 }
 
 function loadBunnyTeamHTML(){
@@ -77,7 +77,7 @@ function loadBunnyTeamHTML(){
         })
 
         const paragon = Object.assign(document.createElement('img'), {
-            src: data.teamData[i] !== null ? getParagonNumber(data.teamData[i].data.paragonLevel) : 'res/fallback.png',
+            src: data.teamData[i] !== null ? getParagonNumber(data.teamData[i].paragonLevel) : 'res/fallback.png',
             className: 'paragon',
             id: `teamParagon${i}`,
             style: `margin-top: 0.2rem; margin-right: -0.3rem`
@@ -96,7 +96,7 @@ function loadBunnyTeamHTML(){
         changeBunnyTeamBorder(i, teamBox)
         teamWrapper.addEventListener('click', () => boxControl(i, 'team'))
         teamWrapper.addEventListener('mouseover', () => {
-            if(data.teamData[i] !== null) updateBunnyDisplayHTML(data.teamData[i].index)
+            if(data.teamData[i] !== null) updateBunnyDisplayHTML(data.teamData[i])
         })
 
         barOuter.appendChild(barInner)
@@ -165,14 +165,14 @@ function updateCombatHealthBarHTML(isEnemy){
         DOM(`healthBarEnemy`).style.width = `${progress}%`
     }
     else{
-        let progress = (data.combat.currentBunny.data.currentHP / data.combat.currentBunny.data.stats.health) * 100
+        let progress = (data.combat.currentBunny.currentHP / data.combat.currentBunny.stats.health) * 100
         DOM(`healthBarCombat`).style.width = `${progress}%`
     }
 }
 
 function updateHealthBarHTML(index){
     if(data.teamData[index] === null) return
-    const progress = (data.teamData[index].data.currentHP / data.teamData[index].data.stats.health) * 100
+    const progress = (data.teamData[index].currentHP / data.teamData[index].stats.health) * 100
     DOM(`healthBar${index}`).style.width = `${progress}%`
 }
 

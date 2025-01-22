@@ -9,21 +9,21 @@ function loadParagonHTML(){
         })
 
         const paragonBox = Object.assign(document.createElement('img'), {
-            src: data.paragonData[i] !== null ? getBunnyImg(data.paragonData[i].data.rarity, data.paragonData[i].data.id) : 'res/fallback.png',
+            src: data.paragonData[i] !== null ? getBunnyImg(data.paragonData[i].rarity, data.paragonData[i].id) : 'res/fallback.png',
             className: 'paragonBox',
             id: `paragonBox${i}`,
             style: `border-color: ${data.paragonData[i] !== null ? '#52255e' : 'gray'}`
         })
 
         const paragon = Object.assign(document.createElement('img'), {
-            src: data.paragonData[i] !== null ? getParagonNumber(data.paragonData[i].data.paragonLevel) : 'res/fallback.png',
+            src: data.paragonData[i] !== null ? getParagonNumber(data.paragonData[i].paragonLevel) : 'res/fallback.png',
             className: 'paragon',
             id: `paragonParagon${i}`,
             style: `margin-top: 1.9rem; margin-right: 0.8rem`
         })
 
         paragonWrapper.addEventListener('mouseover', () => {
-            if(data.paragonData[i] !== null) updateBunnyDisplayHTML(data.paragonData[i].index)
+            if(data.paragonData[i] !== null) updateBunnyDisplayHTML(data.paragonData[i])
         })
         paragonBox.addEventListener('click', () => boxControl(i, 'paragon'))
 
@@ -40,9 +40,9 @@ function canFuse() {
     if (firstParagon === null) return false
 
     return data.paragonData.every(paragon => paragon !== null
-        && paragon.data.rarity === firstParagon.data.rarity
-        && paragon.data.id === firstParagon.data.id
-        && paragon.data.paragonLevel === firstParagon.data.paragonLevel
+        && paragon.rarity === firstParagon.rarity
+        && paragon.id === firstParagon.id
+        && paragon.paragonLevel === firstParagon.paragonLevel
     )
 }
 
@@ -58,7 +58,7 @@ function normalizeBunnyData() {
 function paragonFuse(){
     if(!canFuse()) return
 
-    const firstParagonData = data.paragonData[0].data
+    const firstParagonData = data.paragonData[0]
     let stats = { damage: -1, health: -1, shield: -1, luck: -1 }
 
     let bunny = {
@@ -70,11 +70,11 @@ function paragonFuse(){
     }
 
     for (let i = 0; i < data.paragonData.length; i++) {
-        for (const stat in data.paragonData[i].data.stats) {
-            const statsObject = data.paragonData[i].data.stats
+        for (const stat in data.paragonData[i].stats) {
+            const statsObject = data.paragonData[i].stats
             if(statsObject[stat] > stats[stat]) stats[stat] = statsObject[stat]
         }
-        data.bunnyData[data.paragonData[i].index] = null
+        //data.bunnyData[data.paragonData[i].index] = null
         resetBoxData(i, 'paragon', true)
     }
 
