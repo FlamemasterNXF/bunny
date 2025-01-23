@@ -1,19 +1,21 @@
 function mainLoop() {
-    // Calculate diff and usableDiff
+    // Calculate diff
     if(data.lastTick === 0) data.lastTick = Date.now()
     let diff = data.offline ? Math.max((Date.now() - data.lastTick), 0) : data.ms
+
     // Used for Offline Progress
-    let uDiff = diff/1000
+    let seconds = diff/1000
+    let recoveryMultiplier = seconds > 0.1 ? 0.3 : 1
 
     // Update lastTick
     data.lastTick = Date.now()
 
     if(data.combat.currentBunny !== null){
-        damageEnemy(data.combat.currentBunny.data.stats.damage*uDiff)
-        damageBunny(data.enemyData.damage*uDiff)
+        damageEnemy(data.combat.currentBunny.data.stats.damage*seconds)
+        damageBunny(data.enemyData.damage*seconds)
     }
     if(data.teamData.some(bunny => bunny !== null)){
-        bunnyRecover(getRecoveringBunny())
+        bunnyRecover(getRecoveringBunny(), recoveryMultiplier)
         if(data.combat.currentBunny === null) sendHealthyBunny()
     }
 

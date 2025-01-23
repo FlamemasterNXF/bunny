@@ -41,11 +41,11 @@ function getRecoveryAmount(index){
     return data.teamData[index].stats.health / 300
 }
 
-function bunnyRecover(index){
+function bunnyRecover(index, multiplier){
     if(index === -1) return
 
     const maxHealth = data.teamData[index].stats.health
-    data.teamData[index].currentHP += getRecoveryAmount(index)
+    data.teamData[index].currentHP += getRecoveryAmount(index) * multiplier
     if(data.teamData[index].currentHP >= maxHealth){
         data.teamData[index].currentHP = maxHealth
     }
