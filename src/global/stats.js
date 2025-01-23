@@ -15,11 +15,6 @@ let newStats = {
     }
 }
 
-// WIP ?
-function getBunnyStat(stat, paragonLevel){
-    return stat * (1 + paragonLevel / 10)
-}
-
 function getShieldedDamage(damage){
     return damage*(1-data.combat.currentBunny.data.stats.shield);
 }

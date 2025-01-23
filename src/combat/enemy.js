@@ -8,8 +8,7 @@ function makeFirstTimeEnemy(){
 }
 
 function getStageRequirement(){
-    if(data.combat.currentStage > 9) return 10
-    return data.combat.currentStage
+    return Math.min(10, data.combat.currentStage)
 }
 
 function advanceStage(){

@@ -78,6 +78,8 @@ function paragonFuse(){
         resetBoxData(i, 'paragon', true)
     }
 
+    stats.damage *= 1 + (bunny.paragonLevel * 0.25)
+    stats.health *= 1 + (bunny.paragonLevel * 0.25)
     bunny.stats = stats
     bunny.currentHP = stats.health
 
