@@ -73,3 +73,12 @@
     width: 5rem;
     height: 5rem;
 }
+
+.settingsButton{
+    width: 8rem;
+    height: 3rem;
+    background: black;
+    border: 2px solid #323232;
+    color: gray;
+    margin: 0.5rem;
+}

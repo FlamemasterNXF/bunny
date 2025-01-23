@@ -89,6 +89,7 @@
                         <div class="dropdownContent" id="navDropdown">
                             <a onclick="switchSubtab('combat')">Bunny Combat</a>
                             <a onclick="switchSubtab('paragon')">Paragon Fusion</a>
+                            <a onclick="switchSubtab('settings')">Settings</a>
                         </div>
                     </div>
                 </div>
@@ -104,6 +105,14 @@
                             <div class="bunnyWrapper" id="enemyWrapper" style="margin-left: 3rem"></div>
                         </div>
                         <button id="enemyStats" style="color: white; border: 2px solid #230000; margin-left: 2rem; width: 10rem; height: 8rem; background: black; font-family: DosisLight, serif"></button>
+                    </div>
+                </div>
+                <div class="column subTab" id="settingsSubTab">
+                    <div class="row" id="savingRow">
+                        <button class="settingsButton" onclick="exportSave()">Copy Save</button>
+                        <button class="settingsButton" onclick="downloadSave()">Download Save</button>
+                        <button class="settingsButton" onclick="createPrompt('Import Save', importSave, true, 'Paste your Save here!')">Import Save</button>
+                        <button class="settingsButton" onclick="createConfirmation('Are you sure you want to do this?', 'Deleting your save is permanent! (it will also copy your save, just in case)', 'No way!', 'Yep.', fullReset)">Delete Save</button>
                     </div>
                 </div>
             </div>

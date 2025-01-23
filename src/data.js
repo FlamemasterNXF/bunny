@@ -1,5 +1,5 @@
 //Version Flags
-const VERSION = "0.1.1"
+const VERSION = "0.1.2"
 const VERSION_DATE = "January 22nd, 2024"
 const IS_BETA = false
 const SAVE_PATH = () => IS_BETA ? "bunnyGamefnxfSaveBeta" : "bunnyGamefnxfSave"

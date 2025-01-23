@@ -7,6 +7,10 @@ function switchSubtab(tab){
         DOM(`subTabFlavour`).style.color = '#bf4e4e'
         updateCombatHeaderHTML()
     }
+    if(tab === 'settings'){
+        DOM(`subTabFlavour`).style.color = '#808080'
+        DOM(`subTabFlavour`).innerText = 'Settings'
+    }
 
     DOM(`${data.nav}SubTab`).style.display = 'none'
 
