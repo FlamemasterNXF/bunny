@@ -46,7 +46,12 @@ function makeBunnyStatsHTML(bunnyData){
         .join('');
 }
 
+function makeBunnyStageHTML(bunnyData){
+    if(bunnyData?.stageObtained === null || bunnyData?.stageObtained === undefined) return 'an unknown Stage!'
+    return 'Stage ' + bunnyData.stageObtained
+}
+
 function updateBunnyDisplayHTML(bunnyData){
     DOM(`bunnyInfoImg`).src = getBunnyImg(bunnyData.rarity, bunnyData.id)
-    DOM(`bunnyInfoText`).innerHTML = `This is a <span style="color: ${getRarityColor(bunnyData.rarity)}">${getRarityName(bunnyData.rarity)} ${getBunnyName(bunnyData.rarity, bunnyData.id)}!</span><br><i>${getBunnyDesc(bunnyData.rarity, bunnyData.id)}</i><br><br><span style="color: #a74ebf"><b>Paragon Tier: ${bunnyData.paragonLevel}</b></span>${makeBunnyStatsHTML(bunnyData)}`
+    DOM(`bunnyInfoText`).innerHTML = `This is a <span style="color: ${getRarityColor(bunnyData.rarity)}">${getRarityName(bunnyData.rarity)} ${getBunnyName(bunnyData.rarity, bunnyData.id)}!</span><br><i>${getBunnyDesc(bunnyData.rarity, bunnyData.id)}</i><br><br><span style="color: #a74ebf"><b>Paragon Tier: ${bunnyData.paragonLevel}</b></span>${makeBunnyStatsHTML(bunnyData)}<br><i style="color: #6677cc">He was obtained on ${makeBunnyStageHTML(bunnyData)}</i>`
 }

@@ -151,7 +151,8 @@ function makeFirstBunny(){
         id: 0,
         paragonLevel: 0,
         currentHP: stats.health,
-        stats: stats
+        stats: stats,
+        stageObtained: 0,
     }
 
     addBunny(bunny)

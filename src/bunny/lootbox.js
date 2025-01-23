@@ -48,7 +48,8 @@ function openLootbox(luck = 0){
         id: bunnyID,
         paragonLevel: 0,
         currentHP: stats.health,
-        stats: stats
+        stats: stats,
+        stageObtained: data.combat.currentStage-1
     }
 
     addBunny(bunny)

@@ -66,7 +66,8 @@ function paragonFuse(){
         id: firstParagonData.id,
         paragonLevel: firstParagonData.paragonLevel+1,
         stats: stats,
-        currentHP: stats.health
+        currentHP: stats.health,
+        stageObtained: data.combat.currentStage
     }
 
     for (let i = 0; i < data.paragonData.length; i++) {
